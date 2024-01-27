@@ -7,7 +7,7 @@ pipeline {
         stage('Fetch Code') {
             steps {
                 // Checkout code from GitHub
-                git branch: 'main', url: 'https://github.com/alihamza372/jpg_to_png.git'
+                git branch: 'master', url: 'https://github.com/alihamza372/jpg_to_png.git'
             }
         }
         
