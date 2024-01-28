@@ -14,7 +14,7 @@ pipeline {
     steps {
         script {
             def tomcatWebappsDir = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
-            sh "sudo chown -R jenkins:jenkins ${tomcatWebappsDir}"
+            sh "sudo chown -R ali:ali ${tomcatWebappsDir}"
             sh "sudo chmod -R 755 ${tomcatWebappsDir}"
             sh "rm -rf ${tomcatWebappsDir}/*"
             sh "cp -r * ${tomcatWebappsDir}/"
