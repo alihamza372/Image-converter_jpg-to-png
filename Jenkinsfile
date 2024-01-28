@@ -14,9 +14,9 @@ pipeline {
             steps {
                 script {
                     def tomcatWebappsDir = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
-			sh 'sudo chown -R jenkins:jenkins /var/tomcat/webapps/Image-converter_jpg-to-png'
-			sh 'sudo chown -R jenkins:jenkins /var/tomcat/webapps'
-			sh 'sudo mkdir -p /var/tomcat/webapps/Image-converter_jpg-to-png'
+			sh 'sudo chown -R jenkins:jenkins /home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
+			sh 'sudo chown -R jenkins:jenkins /home/ali/Desktop/tomcat/webapps'
+			sh 'sudo mkdir -p /home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
                     // Ensure the directory exists
                     sh "mkdir -p ${tomcatWebappsDir}"
                     
