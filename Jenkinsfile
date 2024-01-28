@@ -11,16 +11,18 @@ pipeline {
             }
         }       
         stage('Deploy to Tomcat') {
-    steps {
-        script {
-            def tomcatWebappsDir = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
-            sh "sudo chown -R ali:ali ${tomcatWebappsDir}"
-            sh "sudo chmod -R 755 ${tomcatWebappsDir}"
-            sh "rm -rf ${tomcatWebappsDir}/*"
-            sh "cp -r * ${tomcatWebappsDir}/"
-        }
-    }
-}       
+            steps {
+                script {
+                    def tomcatWebappsDir = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
+                    
+                    // Ensure the directory exists
+                    sh "mkdir -p ${tomcatWebappsDir}"
+                    
+                    // Copy files to Tomcat webapps directory
+                    sh "cp -r * ${tomcatWebappsDir}/"
+                }
+            }
+        }     
         stage('Restart Tomcat') {
             steps {
                 // Restart Tomcat (replace 'tomcat' with your Tomcat service name)
