@@ -27,7 +27,7 @@ pipeline {
                     sh "sudo mkdir -p ${TOMCAT_WEBAPPS_DIR}"
                     
                     // Set ownership to Jenkins user
-                    sh "sudo chown -R jenkins:jenkins ${TOMCAT_WEBAPPS_DIR}"
+                    sh "sudo chmod -R 777 ${TOMCAT_WEBAPPS_DIR}"
 
                     // Copy files to Tomcat webapps directory
                     sh "cp -r * ${TOMCAT_WEBAPPS_DIR}/"
