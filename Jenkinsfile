@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     def tomcatWebappsDir = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
-                    
+                    sh 'whoami'
                     // Ensure the directory exists
                     sh "mkdir -p ${tomcatWebappsDir}"
                     
