@@ -4,7 +4,7 @@ pipeline {
         pollSCM('*/5 * * * *')
     }
     environment {
-        TOMCAT_WEBAPPS_DIR = '/home/ali/Desktop/tomcat/webapps/Image-converter_jpg-to-png'
+        TOMCAT_WEBAPPS_DIR = '/opt/tomcat/webapps/Image-converter_jpg-to-png'
     }
     stages {
         stage('Fetch Code') {
