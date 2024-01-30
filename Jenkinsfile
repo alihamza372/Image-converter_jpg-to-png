@@ -15,23 +15,16 @@ pipeline {
         }
 
         stage('Deploy to Tomcat') {
-            steps {
-                script {
-                    // Display current user
-                    sh 'whoami'
-
-                    // Print environment variables
-                    sh 'env'
-                    
-                    // Set ownership to Jenkins user
-                    //sh "chmod -R 777 ${TOMCAT_WEBAPPS_DIR}"
-                    // Ensure the directory exists
-                    //sh "mkdir -p ${TOMCAT_WEBAPPS_DIR}"
-                    // Copy files to Tomcat webapps directory
-                    sh "cp -r * ${TOMCAT_WEBAPPS_DIR}/"
-                }
-            }
+    steps {
+        script {
+            sh "sudo chown -R jenkins:jenkins ${TOMCAT_WEBAPPS_DIR}"
+            sh "sudo chmod -R 755 ${TOMCAT_WEBAPPS_DIR}"
+            sh "rm -rf ${TOMCAT_WEBAPPS_DIR}/*"
+            sh "cp -r * ${TOMCAT_WEBAPPS_DIR}/"
         }
+    }
+}
+
 
         stage('Restart Tomcat') {
             steps {
