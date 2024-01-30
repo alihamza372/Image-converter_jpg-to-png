@@ -36,7 +36,7 @@ pipeline {
         stage('Restart Tomcat') {
             steps {
                 // Restart Tomcat (replace 'tomcat' with your Tomcat service name)
-                sh 'sudo systemctl restart tomcat'
+                sh 'systemctl start tomcat'
             }
         }
     }
