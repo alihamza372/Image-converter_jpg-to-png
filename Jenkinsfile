@@ -16,7 +16,7 @@ pipeline {
                 script {
                     def tomcatWebappsDir = '/opt/tomcat/webapps/Image-converter_jpg-to-png'
                     sh "sudo rm -rf ${tomcatWebappsDir}/*"
-                    sh "cp -r * ${tomcatWebappsDir}/"
+                    sh "sudo cp -r * ${tomcatWebappsDir}/"
                 }
             }
         }
