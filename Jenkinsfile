@@ -1,31 +1,30 @@
 pipeline {
     agent any
-
+	triggers{
+	pollSCM('*/5 * * * *')    
+}
     stages {
-        stage('Checkout from GitHub') {
+        stage('Fetch Code') {
             steps {
+                // Checkout code from GitHub
+                git branch: 'master', url: 'https://github.com/alihamza372/jpg_to_png.git'
+            }
+        }       
+        stage('Deploy to Tomcat') {
+            steps {
+                // Copy files to Tomcat webapps directory
                 script {
-                    // GitHub repository URL
-                    def gitRepoUrl = 'https://github.com/alihamza372/jpg_to_png.git'
-
-                    // Clone the GitHub repository with the 'master' branch
-                    git branch: 'master', url: gitRepoUrl
+                    def tomcatWebappsDir = '/opt/tomcat/webapps/Image-converter_jpg-to-png'
+                    sh "sudo rm -rf ${tomcatWebappsDir}/*"
+                    sh "cp -r * ${tomcatWebappsDir}/"
                 }
             }
         }
-        stage('Checking Permissions'){
-        steps{
-            script{
-                sh 'sudo mkdir /opt/Perm'
-            }
-        }
-        }
-        stage('Display Contents') {
+        
+        stage('Restart Tomcat') {
             steps {
-                script {
-                    // Display the contents of the Jenkins workspace
-                    sh 'ls -la'
-                }
+                // Restart Tomcat (replace 'tomcat' with your Tomcat service name)
+                sh 'sudo systemctl restart tomcat'
             }
         }
     }
