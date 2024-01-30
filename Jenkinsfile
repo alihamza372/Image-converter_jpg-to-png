@@ -24,7 +24,7 @@ pipeline {
                     sh 'env'
                     
                     // Set ownership to Jenkins user
-                    sh "chmod -R 777 ${TOMCAT_WEBAPPS_DIR}"
+                    //sh "chmod -R 777 ${TOMCAT_WEBAPPS_DIR}"
                     // Ensure the directory exists
                     sh "mkdir -p ${TOMCAT_WEBAPPS_DIR}"
                     // Copy files to Tomcat webapps directory
