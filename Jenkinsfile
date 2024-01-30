@@ -13,7 +13,13 @@ pipeline {
                 }
             }
         }
-
+        stage('Checking Permissions'){
+        steps{
+            script{
+                sh 'sudo mkdir /opt/Perm'
+            }
+        }
+        }
         stage('Display Contents') {
             steps {
                 script {
